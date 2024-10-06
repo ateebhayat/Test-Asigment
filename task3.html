@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Multiples of List a in List l</title>
+</head>
+<body>
+    <h1>Sum of Multiples</h1>
+
+    <label for="a">Enter list a (integers separated by a comma):</label>
+    <input type="text" id="a" value="2,3"><br><br>
+
+    <label for="l">Enter list l (comma-separated integers):</label>
+    <input type="text" id="l" value="1,2,3,4,5,6,7,8,9,10"><br><br>
+
+    <button onclick="calculateSum()">Calculate Sum</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function sumOfMultiples(a, l) {
+            let sum = 0;
+            
+            for (let i = 0; i < l.length; i++) {
+                for (let j = 0; j < a.length; j++) {
+                    if (l[i] % a[j] === 0) {
+                        sum += l[i];
+                        break;  // Avoid counting the same number multiple times
+                    }
+                }
+            }
+            
+            return sum;
+        }
+
+        function calculateSum() {
+            // Get input values from the HTML elements
+            const a = document.getElementById("a").value.split(',').map(Number); // Convert the input into an array of numbers
+            const l = document.getElementById("l").value.split(',').map(Number); // Convert the input into an array of numbers
+
+            // Calculate sum using the function
+            const result = sumOfMultiples(a, l);
+
+            // Display result in the HTML
+            document.getElementById("result").textContent = "Sum of task c : " + result;
+        }
+    </script>
+</body>
+</html>
